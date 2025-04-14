@@ -5,6 +5,26 @@ const outputDiv = document.getElementById("output"); // keep this to output to p
 // 2. with the properties: difficulty, soundOn, and maxPlayers. 
 // 3. Loop through the object and 
 // 4. display the results to the page.
+let gameSettings = {
+  difficulty: "easy",
+  soundOn: true,
+  maxPlayers: 4,
+
+for (key in gameSettings) {
+
+
+
+
+
+
+
+
+
+
+
+
+\\\\\\
+
 
 function problem1() {
   // Output results in a new result variable. use let result = ______
