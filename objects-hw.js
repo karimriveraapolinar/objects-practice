@@ -5,29 +5,17 @@ const outputDiv = document.getElementById("output"); // keep this to output to p
 // 2. with the properties: difficulty, soundOn, and maxPlayers. 
 // 3. Loop through the object and 
 // 4. display the results to the page.
-let gameSettings = {
+const gameSettings = {
   difficulty: "easy",
   soundOn: true,
   maxPlayers: 4,
-
-for (key in gameSettings) {
-
-
-
-
-
-
-
-
-
-
-
-
-\\\\\\
-
+}
 
 function problem1() {
-  // Output results in a new result variable. use let result = ______
+  let result= "<strong>Game Settings:</strong><br>";
+  for (let key in gameSettings) {
+    result += `${key}: ${gameSettings[key]}<br>`;
+  }
   outputDiv.innerHTML = result; // keep this to output to page.
 }
 
@@ -38,7 +26,7 @@ function problem1() {
 // 4. Each time you click the button, it should alternate between true and false.
 
 function problem2() {
-  // Add ONE line IN THIS function that calls toggleSound method.
+  gameSettings.toggleSound();
   outputDiv.innerHTML = `<strong>Sound is now:</strong> ${gameSettings.soundOn}`;
 }
 
@@ -47,16 +35,18 @@ function problem2() {
 // 2. with the properties flavor, size, and hasProtein (boolean). 
 // 3. Prompt the user for a size, then 
 // 4. display the updated size on the page.
-  
-  function problem3() {
-    // keep this if else block to help with overwriting the old size. 
-    // You will need to have created a newSize variable with the use of a prompt.
-    if (newSize && newSize.trim() !== "") {
-      smoothie.size = newSize.trim();
-    }
-    outputDiv.innerHTML = `<strong>Smoothie Size Updated:</strong> ${smoothie.size}`;
+function problem3() {
+  let newSize = prompt("Enter Smoothie Size:");
+  let smoothie = {
+    flavor: "Vanilla",
+    size: newSize,
+    hasProtein: true,
   }
-  
+  if (newSize && newSize.trim() !== "") {
+    smoothie.size = newSize.trim();
+  }
+  outputDiv.innerHTML = `<strong>Smoothie Size Updated:</strong> ${smoothie.size}`;
+}
 
 // Problem 4
 // 1. Create an object called gadget. 
@@ -65,14 +55,19 @@ function problem2() {
 // 4. takes the properties of gadget and 
 // 5. displays a formatted string to the page like:
 // 6. "Name: [name], Battery Life: [batteryLife] hrs, Wireless: [true/false]".
+let gadget = {
+  name: "Smartphone",
+  batteryLife: 24,
+  isWireless: true,
+};
 
 
 function printGadgetSpecs(gadget) {
-  return // insert `output string here` // hint: use backticks and ${object.property} references.
+  return `Name: ${gadget.name}, Battery Life: ${gadget.batteryLife}, Wireless: ${gadget.isWireless}`;
 }
 
 function problem4() {
-  outputDiv.innerHTML = `<strong>Gadget Specs:</strong> ${printGadgetSpecs(Gadget)}`;
+  outputDiv.innerHTML = `<strong>Gadget Specs:</strong> ${printGadgetSpecs(gadget)}`;
 }
 
 // Problem 5
@@ -86,7 +81,12 @@ function problem4() {
 
 
 function problem5() {
-  
+  let garden = {
+    plants: ['Peonies', 'Tulips', 'Roses'],  
+    addPlant: function(plant) {
+      this.plants.push(newPlant);
+    },
+  };
   // This helps with keeping your text entry box clean after every input.
   // No need to change this, just keep the variable and object naming in mind.
   const newPlant = document.getElementById("plantInput").value;
@@ -112,21 +112,28 @@ function problem5() {
 // 5. Then add two songs and log the playlist.
 
 function problem6() {
+  let playlist = {
+    name: "My Playlist",
+    songList: [],
+    addSong: function(song) {
+      this.songList.push(song);
+    },
+  };
   // Use a for loop that iterates 2 times to ask for two songs.
   // No need to touch the for loop except uncommenting and replacing the PLACEHOLDER.
-  // for (PLACEHOLDER) {
-  //   const song = prompt(`Enter song ${i + 1}:`);
-  //   if (song && song.trim() !== "") {
-  //     playlist.addSong(song.trim());
-  //   }
-  // }
+   for (let i = 0; i < 2; i++) {
+     const song = prompt(`Enter song ${i + 1}:`);
+     if (song && song.trim() !== "") {
+       playlist.addSong(song.trim());
+     }
+   }
 
 
   // This will output to the page for you:
   // Just fill in the PLACEHOLDERs with the correct info.
-  let result = `<strong>Playlist: PLACEHOLDER </strong><ul>`;
-  for (let song of PLACEHOLDER) {
-    result += `<li>${PLACEHOLDER}</li>`;
+  let result = `<strong>Playlist: ${playlist.name} </strong><ul>`;
+  for (let song of playlist.songList) {
+    result += `<li>${song}</li>`;
   }
   result += "</ul>";
   outputDiv.innerHTML = result;
