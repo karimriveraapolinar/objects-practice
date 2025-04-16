@@ -24,8 +24,11 @@ function problem1() {
 // 2. that switches the soundOn property between true and false. 
 // 3. Call the method and output the soundOn property to the page. 
 // 4. Each time you click the button, it should alternate between true and false.
-
 function problem2() {
+  gameSettings.toggleSound = function() {
+    this.soundOn = !this.soundOn;
+  }
+
   gameSettings.toggleSound();
   outputDiv.innerHTML = `<strong>Sound is now:</strong> ${gameSettings.soundOn}`;
 }
